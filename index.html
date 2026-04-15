@@ -7,6 +7,7 @@
   <title>JP / John Editor — Edição | Motion | Photoshop</title>
   <meta name="description"
     content="JP / John Editor — Criação de vídeo, motion design e manipulação digital de nível cinematográfico.">
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/dhSJhVY1/photo-20250415-123614-removebg.png">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
@@ -3707,12 +3708,12 @@
                 icon="mdi:whatsapp"></iconify-icon>+55 51 98587-0257</a>
           </div>
         </div>
-        <form class="cform rvr" onsubmit="doForm(event)">
+        <form class="cform rvr" id="contactForm">
           <div class="frow">
-            <div class="fg"><label>Nome</label><input type="text" placeholder="Seu nome" required></div>
-            <div class="fg"><label>Email</label><input type="email" placeholder="seu@email.com" required></div>
+            <div class="fg"><label>Nome</label><input type="text" id="fname" placeholder="Seu nome" required></div>
+            <div class="fg"><label>Email</label><input type="email" id="femail" placeholder="seu@email.com" required></div>
           </div>
-          <div class="fg"><label>Tipo de Projeto</label><select required>
+          <div class="fg"><label>Tipo de Projeto</label><select id="ftype" required>
               <option value="">Selecione...</option>
               <option>Edição de Vídeo</option>
               <option>Motion Design</option>
@@ -3721,9 +3722,9 @@
               <option>Pacote Completo</option>
               <option>Outro</option>
             </select></div>
-          <div class="fg"><label>Detalhes do Projeto</label><textarea
+          <div class="fg"><label>Detalhes do Projeto</label><textarea id="fdetails"
               placeholder="Conte sobre sua ideia, prazos e referências..." required></textarea></div>
-          <button type="submit" class="fsub magnetic">Enviar Mensagem <iconify-icon
+          <button type="button" class="fsub magnetic" onclick="doForm()">Enviar Mensagem <iconify-icon
               icon="mdi:send"></iconify-icon></button>
         </form>
       </div>
@@ -4162,10 +4163,21 @@
       t.classList.add('on');
       setTimeout(() => { t.classList.remove('on'); setTimeout(() => m.textContent = 'Mensagem enviada com sucesso!', 500) }, 3000);
     }
-    function doForm(e) {
-      e.preventDefault();
-      const t = document.getElementById('toast'); t.classList.add('on'); e.target.reset();
-      setTimeout(() => t.classList.remove('on'), 3500);
+    function doForm() {
+      const nome = document.getElementById('fname').value;
+      const email = document.getElementById('femail').value;
+      const tipo = document.getElementById('ftype').value;
+      const detalhes = document.getElementById('fdetails').value;
+      if (!nome || !email || !tipo || !detalhes) return;
+      const msg = `*Novo Projeto - Portfolio JP Editor*\n\n*Nome:* ${nome}\n*Email:* ${email}\n*Tipo:* ${tipo}\n*Detalhes:* ${detalhes}`;
+      const waUrl = `https://wa.me/5551985870257?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+      document.getElementById('contactForm').reset();
+      const t = document.getElementById('toast');
+      const m = document.getElementById('toastmsg');
+      m.textContent = 'Redirecionando para o WhatsApp...';
+      t.classList.add('on');
+      setTimeout(() => { t.classList.remove('on'); setTimeout(() => m.textContent = 'Mensagem enviada com sucesso!', 500) }, 3000);
     }
     function toggleMob() {
       const l = document.querySelector('.navl');
