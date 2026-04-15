@@ -3046,12 +3046,12 @@
     /* Mobile View Mode */
     .mobile-view .pgrid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
 
     .mobile-view .pit {
       aspect-ratio: 1/1;
-      border-radius: 8px;
+      border-radius: 6px;
     }
 
     .mobile-view .pit.lg,
@@ -3059,59 +3059,80 @@
     .mobile-view .pit.wide {
       grid-column: span 2;
       grid-row: span 1;
-      aspect-ratio: 16/9;
+      aspect-ratio: 16/10;
+    }
+
+    .mobile-view .pit h4 {
+      font-size: 12px;
+      bottom: 8px;
+      left: 8px;
+    }
+
+    .mobile-view .pit .ptag {
+      font-size: 9px;
+      bottom: 28px;
+      left: 8px;
     }
 
     .mobile-view section {
-      padding: 60px 16px;
+      padding: 48px 14px;
     }
 
     .mobile-view .htitle {
-      font-size: clamp(36px, 12vw, 72px);
-      letter-spacing: -3px;
+      font-size: clamp(32px, 11vw, 56px);
+      letter-spacing: -2px;
+      line-height: 1.1;
     }
 
     .mobile-view .hsub {
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.5;
+      margin-top: 8px;
     }
 
     .mobile-view .hbtns {
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
+      margin-top: 24px;
     }
 
     .mobile-view .btnp,
     .mobile-view .btns {
       width: 100%;
       justify-content: center;
-      padding: 14px 24px;
+      padding: 12px 20px;
       font-size: 13px;
     }
 
     .mobile-view .stit {
-      font-size: clamp(28px, 8vw, 48px);
+      font-size: clamp(24px, 7vw, 40px);
       letter-spacing: -1px;
     }
 
     .mobile-view .sdesc {
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.6;
+      margin-top: 10px;
     }
 
     .mobile-view .svcgrid {
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 12px;
     }
 
     .mobile-view .scard {
-      padding: 20px;
+      padding: 16px;
+    }
+
+    .mobile-view .scard h4 {
+      font-size: 15px;
     }
 
     .mobile-view .strow {
       flex-direction: column;
-      gap: 24px;
+      gap: 16px;
+      margin-top: 24px;
     }
 
     .mobile-view .testgrid {
@@ -3119,7 +3140,7 @@
     }
 
     .mobile-view .tcard {
-      padding: 20px;
+      padding: 16px;
     }
 
     .mobile-view .ctctin {
@@ -3127,12 +3148,21 @@
     }
 
     .mobile-view .cinfo {
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
     .mobile-view .clinks {
-      flex-direction: column;
-      gap: 12px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .mobile-view .cinfo h2 {
+      font-size: 22px;
+    }
+
+    .mobile-view .cinfo p {
+      font-size: 13px;
     }
 
     .mobile-view .frow {
@@ -3141,6 +3171,7 @@
 
     .mobile-view .stags {
       flex-wrap: wrap;
+      gap: 6px;
     }
 
     .mobile-view .stags span {
@@ -3148,26 +3179,32 @@
       padding: 4px 8px;
     }
 
+    .mobile-view .clink {
+      font-size: 12px;
+    }
+
     .mobile-view nav {
-      padding: 0 16px;
+      padding: 0 14px;
+      height: 60px;
     }
 
     .mobile-view .lname {
-      font-size: 12px;
-      margin-left: 8px;
+      font-size: 11px;
+      margin-left: 6px;
     }
 
     .mobile-view .lphoto {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
     }
 
     .mobile-view .rtitle {
-      font-size: clamp(28px, 10vw, 56px);
+      font-size: clamp(24px, 8vw, 40px);
     }
 
     .mobile-view .rmeta {
-      font-size: 12px;
+      font-size: 11px;
+      margin-top: 8px;
     }
 
     .mobile-view .rbox {
@@ -3175,7 +3212,8 @@
     }
 
     .mobile-view .reel {
-      height: 50vh;
+      height: 35vh;
+      min-height: 200px;
     }
 
     .mobile-view .sc3dvis {
@@ -3184,6 +3222,42 @@
 
     .mobile-view .sc3dtxt {
       text-align: center;
+      margin-top: 32px;
+    }
+
+    .mobile-view .sc3dtxt .stit {
+      font-size: 22px;
+    }
+
+    .mobile-view .procst {
+      gap: 12px;
+    }
+
+    .mobile-view .procst .pcard {
+      padding: 14px;
+    }
+
+    .mobile-view .fwm {
+      font-size: clamp(40px, 18vw, 80px);
+    }
+
+    .mobile-view .ftag {
+      font-size: 11px;
+      margin-top: 8px;
+    }
+
+    .mobile-view .fcp {
+      font-size: 11px;
+    }
+
+    .mobile-view .fsocs {
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .mobile-view .fsoc iconify-icon {
+      font-size: 18px;
+    }
     }
 
     .view-toggle {
