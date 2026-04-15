@@ -3036,11 +3036,197 @@
       .f3dbadge {
         display: none
       }
+
+      .view-toggle {
+        display: none
+      }
+    }
+
+    /* Mobile View Mode */
+    .mobile-view .pgrid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .mobile-view .pit {
+      aspect-ratio: 1/1;
+      border-radius: 8px;
+    }
+
+    .mobile-view .pit.lg,
+    .mobile-view .pit.tall,
+    .mobile-view .pit.wide {
+      grid-column: span 2;
+      grid-row: span 1;
+      aspect-ratio: 16/9;
+    }
+
+    .mobile-view section {
+      padding: 60px 16px;
+    }
+
+    .mobile-view .htitle {
+      font-size: clamp(36px, 12vw, 72px);
+      letter-spacing: -3px;
+    }
+
+    .mobile-view .hsub {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .mobile-view .hbtns {
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .mobile-view .btnp,
+    .mobile-view .btns {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 24px;
+      font-size: 13px;
+    }
+
+    .mobile-view .stit {
+      font-size: clamp(28px, 8vw, 48px);
+      letter-spacing: -1px;
+    }
+
+    .mobile-view .sdesc {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .mobile-view .svcgrid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .mobile-view .scard {
+      padding: 20px;
+    }
+
+    .mobile-view .strow {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .mobile-view .testgrid {
+      grid-template-columns: 1fr;
+    }
+
+    .mobile-view .tcard {
+      padding: 20px;
+    }
+
+    .mobile-view .ctctin {
+      flex-direction: column;
+    }
+
+    .mobile-view .cinfo {
+      margin-bottom: 32px;
+    }
+
+    .mobile-view .clinks {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mobile-view .frow {
+      flex-direction: column;
+    }
+
+    .mobile-view .stags {
+      flex-wrap: wrap;
+    }
+
+    .mobile-view .stags span {
+      font-size: 10px;
+      padding: 4px 8px;
+    }
+
+    .mobile-view nav {
+      padding: 0 16px;
+    }
+
+    .mobile-view .lname {
+      font-size: 12px;
+      margin-left: 8px;
+    }
+
+    .mobile-view .lphoto {
+      width: 32px;
+      height: 32px;
+    }
+
+    .mobile-view .rtitle {
+      font-size: clamp(28px, 10vw, 56px);
+    }
+
+    .mobile-view .rmeta {
+      font-size: 12px;
+    }
+
+    .mobile-view .rbox {
+      display: none;
+    }
+
+    .mobile-view .reel {
+      height: 50vh;
+    }
+
+    .mobile-view .sc3dvis {
+      display: none;
+    }
+
+    .mobile-view .sc3dtxt {
+      text-align: center;
+    }
+
+    .view-toggle {
+      position: fixed;
+      top: 80px;
+      right: 16px;
+      z-index: 9999;
+      background: var(--bg);
+      border: 1px solid var(--p6);
+      color: var(--t1);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    .view-toggle:hover {
+      background: var(--p6);
+      color: var(--bg);
+    }
+
+    @media(max-width:768px) {
+      .view-toggle {
+        display: flex;
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(2,0,6,.9);
+        backdrop-filter: blur(10px);
+      }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Mobile Toggle -->
+  <button class="view-toggle" onclick="toggleView()" id="viewToggle">
+    <iconify-icon icon="mdi:cellphone"></iconify-icon>
+  </button>
 
   <!-- Cursor -->
   <div class="cdot" id="cdot"></div>
@@ -3985,6 +4171,22 @@
       const l = document.querySelector('.navl');
       if (l.style.display === 'flex') { l.style.display = 'none' }
       else { Object.assign(l.style, { display: 'flex', flexDirection: 'column', position: 'absolute', top: '76px', left: '0', right: '0', padding: '28px 24px', background: 'rgba(2,0,6,.98)', gap: '22px', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(139,92,246,.08)' }) }
+    }
+
+    let mobileView = false;
+    function toggleView() {
+      mobileView = !mobileView;
+      document.body.classList.toggle('mobile-view', mobileView);
+      const btn = document.getElementById('viewToggle');
+      if (mobileView) {
+        btn.innerHTML = '<iconify-icon icon="mdi:desktop"></iconify-icon>';
+        btn.style.background = 'var(--p6)';
+        btn.style.color = 'var(--bg)';
+      } else {
+        btn.innerHTML = '<iconify-icon icon="mdi:cellphone"></iconify-icon>';
+        btn.style.background = '';
+        btn.style.color = '';
+      }
     }
     addEventListener('keydown', e => { if (e.key === 'Escape') { closeLB(); if (!iskipped) endIntro() } });
   </script>
