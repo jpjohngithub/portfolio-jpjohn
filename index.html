@@ -3708,25 +3708,6 @@
                 icon="mdi:whatsapp"></iconify-icon>+55 51 98587-0257</a>
           </div>
         </div>
-        <form class="cform rvr" id="contactForm">
-          <div class="frow">
-            <div class="fg"><label>Nome</label><input type="text" id="fname" placeholder="Seu nome" required></div>
-            <div class="fg"><label>Email</label><input type="email" id="femail" placeholder="seu@email.com" required></div>
-          </div>
-          <div class="fg"><label>Tipo de Projeto</label><select id="ftype" required>
-              <option value="">Selecione...</option>
-              <option>Edição de Vídeo</option>
-              <option>Motion Design</option>
-              <option>Thumbnail</option>
-              <option>Flyer</option>
-              <option>Pacote Completo</option>
-              <option>Outro</option>
-            </select></div>
-          <div class="fg"><label>Detalhes do Projeto</label><textarea id="fdetails"
-              placeholder="Conte sobre sua ideia, prazos e referências..." required></textarea></div>
-          <button type="button" class="fsub magnetic" onclick="doForm()">Enviar Mensagem <iconify-icon
-              icon="mdi:send"></iconify-icon></button>
-        </form>
       </div>
     </section>
 
@@ -4160,22 +4141,6 @@
     function reelClick() {
       const t = document.getElementById('toast'), m = document.getElementById('toastmsg');
       m.textContent = 'Showreel em breve! Fique ligado.';
-      t.classList.add('on');
-      setTimeout(() => { t.classList.remove('on'); setTimeout(() => m.textContent = 'Mensagem enviada com sucesso!', 500) }, 3000);
-    }
-    function doForm() {
-      const nome = document.getElementById('fname').value;
-      const email = document.getElementById('femail').value;
-      const tipo = document.getElementById('ftype').value;
-      const detalhes = document.getElementById('fdetails').value;
-      if (!nome || !email || !tipo || !detalhes) return;
-      const msg = `*Novo Projeto - Portfolio JP Editor*\n\n*Nome:* ${nome}\n*Email:* ${email}\n*Tipo:* ${tipo}\n*Detalhes:* ${detalhes}`;
-      const waUrl = `https://wa.me/5551985870257?text=${encodeURIComponent(msg)}`;
-      window.open(waUrl, '_blank');
-      document.getElementById('contactForm').reset();
-      const t = document.getElementById('toast');
-      const m = document.getElementById('toastmsg');
-      m.textContent = 'Redirecionando para o WhatsApp...';
       t.classList.add('on');
       setTimeout(() => { t.classList.remove('on'); setTimeout(() => m.textContent = 'Mensagem enviada com sucesso!', 500) }, 3000);
     }
