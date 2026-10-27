@@ -2852,58 +2852,50 @@
     }
 
     /* ============================================================
-       INTRO MODERNA (MOTION ELEGANTE E RÁPIDO)
+       INTRO CINEMATOGRÁFICA (CURTAIN REVEAL DE ALTO PADRÃO)
        ============================================================ */
     #intro {
       position: fixed;
       inset: 0;
       z-index: 99999;
-      background: #020006;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       cursor: pointer;
-      transition: opacity .65s cubic-bezier(.16, 1, .3, 1), transform .65s cubic-bezier(.16, 1, .3, 1), filter .65s ease;
+      background: transparent;
     }
 
-    #intro.out {
-      opacity: 0;
-      transform: scale(1.05);
-      filter: blur(14px);
-      pointer-events: none;
-    }
-
-    .intro-grid {
+    .intro-curtain {
       position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
-      background-size: 44px 44px;
-      opacity: .7;
-      mask-image: radial-gradient(circle at center, black 35%, transparent 75%);
-      -webkit-mask-image: radial-gradient(circle at center, black 35%, transparent 75%);
+      left: 0;
+      right: 0;
+      background: #000000;
+      z-index: 1;
+      transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
     }
 
-    .intro-glow {
-      position: absolute;
-      width: 450px;
-      height: 450px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(168, 85, 247, 0.08) 50%, transparent 70%);
-      filter: blur(60px);
-      animation: introPulse 2.8s ease-in-out infinite alternate;
-      pointer-events: none;
+    .intro-curtain.top {
+      top: 0;
+      height: 50.5%;
+      transform-origin: top;
     }
 
-    @keyframes introPulse {
-      0% { transform: scale(.92); opacity: .6; }
-      100% { transform: scale(1.15); opacity: 1; }
+    .intro-curtain.bottom {
+      bottom: 0;
+      height: 50.5%;
+      transform-origin: bottom;
     }
 
-    .intro-core {
+    #intro.out .intro-curtain.top {
+      transform: translateY(-100%);
+    }
+
+    #intro.out .intro-curtain.bottom {
+      transform: translateY(100%);
+    }
+
+    .intro-center {
       position: relative;
       z-index: 2;
       display: flex;
@@ -2911,199 +2903,134 @@
       align-items: center;
       text-align: center;
       padding: 0 20px;
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
-    .intro-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Space Grotesk', monospace;
-      font-size: 11px;
-      letter-spacing: 3px;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 16px;
+    #intro.out .intro-center {
       opacity: 0;
-      animation: introFadeDown .6s cubic-bezier(.16, 1, .3, 1) .1s forwards;
+      transform: scale(0.96);
     }
 
-    .intro-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #ef4444;
-      box-shadow: 0 0 10px #ef4444;
-      animation: recBlink 1s ease-in-out infinite alternate;
+    .intro-title-clip {
+      overflow: hidden;
+      padding: 6px 0;
     }
 
-    @keyframes recBlink {
-      0% { opacity: .3; }
-      100% { opacity: 1; }
-    }
-
-    .intro-brand {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
+    .intro-title {
       font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(38px, 8.5vw, 92px);
       font-weight: 800;
-      font-size: clamp(40px, 9.5vw, 88px);
-      line-height: 1;
       letter-spacing: -2px;
+      line-height: 1;
       color: #fff;
+      margin: 0;
+      transform: translateY(115%);
+      animation: introTitleIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+      background: linear-gradient(135deg, #ffffff 40%, #c084fc 80%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 35px rgba(192, 132, 252, 0.25);
+    }
+
+    .intro-sub-clip {
       overflow: hidden;
+      margin-top: 14px;
     }
 
-    .intro-l1 {
-      opacity: 0;
-      transform: translateY(40px);
-      animation: introSlideUp .7s cubic-bezier(.16, 1, .3, 1) .25s forwards;
-      background: linear-gradient(135deg, #ffffff 40%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .intro-l2 {
-      opacity: 0;
-      transform: translateY(40px);
-      animation: introSlideUp .7s cubic-bezier(.16, 1, .3, 1) .4s forwards;
-      background: linear-gradient(135deg, #a855f7 0%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.45));
-    }
-
-    .intro-line {
-      width: 130px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #a855f7, #38bdf8, transparent);
-      box-shadow: 0 0 14px rgba(168, 85, 247, 0.85);
-      margin: 18px 0;
-      transform: scaleX(0);
-      animation: introExpandLine .7s cubic-bezier(.16, 1, .3, 1) .55s forwards;
-    }
-
-    .intro-role {
+    .intro-sub {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(10px, 2.5vw, 13px);
+      font-size: clamp(10px, 2.2vw, 13px);
       font-weight: 600;
-      letter-spacing: 5px;
-      color: rgba(255, 255, 255, 0.65);
+      letter-spacing: 6px;
       text-transform: uppercase;
-      opacity: 0;
-      animation: introFadeUp .7s cubic-bezier(.16, 1, .3, 1) .7s forwards;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+      transform: translateY(120%);
+      animation: introSubIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
     }
 
-    @keyframes introFadeDown {
-      from { opacity: 0; transform: translateY(-12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes introSlideUp {
-      from { opacity: 0; transform: translateY(45px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes introExpandLine {
-      from { transform: scaleX(0); }
-      to { transform: scaleX(1); }
-    }
-    @keyframes introFadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes introTitleIn {
+      from { transform: translateY(115%); }
+      to { transform: translateY(0); }
     }
 
-    /* ESTILOS DE PORTFOLIO APRIMORADOS */
-    .pgrid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
+    @keyframes introSubIn {
+      from { transform: translateY(120%); }
+      to { transform: translateY(0); }
     }
 
-    .pit {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
+    #skipbtn {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.5);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 2px;
       cursor: pointer;
-      border: 1px solid rgba(139, 92, 246, .14);
-      background: rgba(10, 4, 20, 0.7);
-      aspect-ratio: 16/9;
-      transition: all .4s cubic-bezier(.16, 1, .3, 1);
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
     }
 
-    .pit:hover {
-      border-color: rgba(168, 85, 247, .5);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, .6), 0 0 30px rgba(139, 92, 246, .2);
-      transform: translateY(-4px);
+    #skipbtn:hover {
+      background: rgba(168, 85, 247, 0.2);
+      border-color: #a855f7;
+      color: #fff;
     }
 
-    .pit img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .6s cubic-bezier(.16, 1, .3, 1), filter .4s ease;
-      display: block;
-    }
-
-    .pit:hover img {
-      transform: scale(1.05);
-      filter: brightness(0.65);
-    }
-
+    /* ESTILO DE OVERLAY DO PORTFÓLIO (CLIQUE PARA VER MAIS) */
     .pov {
       position: absolute;
       inset: 0;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 24px;
-      background: linear-gradient(to top, rgba(2, 0, 6, 0.95) 0%, rgba(2, 0, 6, 0.5) 45%, transparent 100%);
-      transition: opacity .35s ease;
-    }
-
-    .pov .ptag {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      color: #c084fc;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .pov h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 19px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.25;
-      margin: 0;
-    }
-
-    .pvi {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(139, 92, 246, .2);
-      border: 1px solid rgba(168, 85, 247, .35);
-      backdrop-filter: blur(10px);
-      display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      font-size: 18px;
-      transition: all .3s ease;
-      opacity: 0.85;
+      background: rgba(2, 0, 8, 0.65);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .pit:hover .pvi {
-      background: var(--p6);
-      transform: scale(1.1) rotate(45deg);
+    .pit:hover .pov {
       opacity: 1;
-      box-shadow: 0 0 16px rgba(139, 92, 246, .6);
+    }
+
+    .pov-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
+      transform: translateY(14px) scale(0.95);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pit:hover .pov-cta {
+      transform: translateY(0) scale(1);
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(56, 189, 248, 0.9));
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .pov-cta iconify-icon {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .pit:hover .pov-cta iconify-icon {
+      transform: translate(2px, -2px);
     }
 
     /* Caixa Convidativa Behance */
@@ -3249,46 +3176,33 @@
         font-size: 14px;
       }
 
-      /* Grid de Portfolio no Celular: 1 coluna com proporção natural */
+            /* Grid de Portfolio no Celular */
       .pgrid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        grid-template-columns: 1fr !important;
+        grid-auto-rows: auto !important;
+        gap: 16px !important;
+      }
 
-      .pit, .pit.lg, .pit.tall, .pit.wide {
-        grid-column: span 1 !important;
-        grid-row: span 1 !important;
-        aspect-ratio: 16/10 !important;
+      .pit {
+        aspect-ratio: 16/9 !important;
         height: auto !important;
       }
 
       .pov {
         opacity: 1 !important;
-        padding: 16px !important;
-        background: linear-gradient(to top, rgba(2, 0, 6, 0.95) 0%, rgba(2, 0, 6, 0.35) 60%, transparent 100%) !important;
+        background: linear-gradient(to top, rgba(2, 0, 8, 0.85) 0%, transparent 60%) !important;
+        backdrop-filter: none !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+        padding-bottom: 16px !important;
       }
 
-      .pov h4 {
-        font-size: 16px !important;
-        transform: translateY(0) !important;
-      }
-
-      .pov .ptag {
-        font-size: 9px !important;
-        transform: translateY(0) !important;
-      }
-
-      .pvi {
-        opacity: 1 !important;
+      .pov-cta {
         transform: none !important;
-        top: 12px !important;
-        right: 12px !important;
-        width: 36px !important;
-        height: 36px !important;
-        font-size: 16px !important;
+        padding: 8px 16px !important;
+        font-size: 12px !important;
+        background: rgba(10, 4, 20, 0.85) !important;
+        border-color: rgba(168, 85, 247, 0.4) !important;
       }
 
       .pf-more {
@@ -3369,19 +3283,16 @@
   <!-- ============================================================
      INTRO
      ============================================================ -->
-  <div id="intro" onclick="skipIntro()">
-    <div class="intro-grid"></div>
-    <div class="intro-glow"></div>
-    <div class="intro-core">
-      <div class="intro-tag">
-        <span class="intro-dot"></span><span id="itc">00:00:24</span>
+    <div id="intro" onclick="skipIntro()">
+    <div class="intro-curtain top"></div>
+    <div class="intro-curtain bottom"></div>
+    <div class="intro-center">
+      <div class="intro-title-clip">
+        <h1 class="intro-title">JOHN PETTER</h1>
       </div>
-      <div class="intro-brand">
-        <span class="intro-l1">JP</span>
-        <span class="intro-l2">EDITOR</span>
+      <div class="intro-sub-clip">
+        <p class="intro-sub">PORTFÓLIO &bull; EDIÇÃO & MOTION</p>
       </div>
-      <div class="intro-line"></div>
-      <div class="intro-role">VIDEO EDITING &bull; MOTION DESIGN &bull; CREATIVE</div>
     </div>
     <button id="skipbtn" onclick="skipIntro(event)">PULAR</button>
   </div>
@@ -3553,84 +3464,92 @@
         </div>
       </div>
 
-      <div class="pgrid" id="pgrid">
+            <div class="pgrid" id="pgrid">
         <!-- Item 1 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')">
-          <img src="Imagens/imagem (1).png" alt="Thumbnail YouTube" loading="lazy">
+          <img src="Imagens/imagem (1).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
-            <span class="ptag">Thumbnail &bull; YouTube</span>
-            <h4>Retenção & Storytelling Visual</h4>
-            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
+            <div class="pov-cta">
+              <span>Clique para ver mais</span>
+              <iconify-icon icon="mdi:arrow-top-right"></iconify-icon>
+            </div>
           </div>
         </div>
 
         <!-- Item 2 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.05s">
-          <img src="Imagens/imagem (2).png" alt="Flyer Promocional" loading="lazy">
+          <img src="Imagens/imagem (2).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
-            <span class="ptag">Design &bull; Visual Impact</span>
-            <h4>Composição & Alto Contraste</h4>
-            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
+            <div class="pov-cta">
+              <span>Clique para ver mais</span>
+              <iconify-icon icon="mdi:arrow-top-right"></iconify-icon>
+            </div>
           </div>
         </div>
 
         <!-- Item 3 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.1s">
-          <img src="Imagens/imagem (3).png" alt="Thumbnail YouTube" loading="lazy">
+          <img src="Imagens/imagem (3).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
-            <span class="ptag">Thumbnail &bull; High CTR</span>
-            <h4>Teoria das Cores & Iluminação</h4>
-            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
+            <div class="pov-cta">
+              <span>Clique para ver mais</span>
+              <iconify-icon icon="mdi:arrow-top-right"></iconify-icon>
+            </div>
           </div>
         </div>
 
         <!-- Item 4 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.15s">
-          <img src="Imagens/imagem (4).png" alt="Flyer Artístico" loading="lazy">
+          <img src="Imagens/imagem (4).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
-            <span class="ptag">Arte Digital &bull; Flyer</span>
-            <h4>Identidade & Ambientação</h4>
-            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
+            <div class="pov-cta">
+              <span>Clique para ver mais</span>
+              <iconify-icon icon="mdi:arrow-top-right"></iconify-icon>
+            </div>
           </div>
         </div>
 
         <!-- Item 5 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.2s">
-          <img src="Imagens/imagem (5).png" alt="Thumbnail Edição" loading="lazy">
+          <img src="Imagens/imagem (5).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
-            <span class="ptag">Thumbnail &bull; Edição</span>
-            <h4>Direção Criativa & Dinamismo</h4>
-            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
+            <div class="pov-cta">
+              <span>Clique para ver mais</span>
+              <iconify-icon icon="mdi:arrow-top-right"></iconify-icon>
+            </div>
           </div>
         </div>
 
         <!-- Item 6 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.25s">
-          <img src="Imagens/imagem (6).png" alt="Flyer & Edição" loading="lazy">
+          <img src="Imagens/imagem (6).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
-            <span class="ptag">Design &bull; Evento</span>
-            <h4>Tipografia & Efeitos Visuais</h4>
-            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
+            <div class="pov-cta">
+              <span>Clique para ver mais</span>
+              <iconify-icon icon="mdi:arrow-top-right"></iconify-icon>
+            </div>
           </div>
         </div>
 
         <!-- Item 7 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.3s">
-          <img src="Imagens/imagem (7).png" alt="Thumbnail Manipulação" loading="lazy">
+          <img src="Imagens/imagem (7).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
-            <span class="ptag">Thumbnail &bull; Photoshop</span>
-            <h4>Manipulação Digital Avançada</h4>
-            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
+            <div class="pov-cta">
+              <span>Clique para ver mais</span>
+              <iconify-icon icon="mdi:arrow-top-right"></iconify-icon>
+            </div>
           </div>
         </div>
 
         <!-- Item 8 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.35s">
-          <img src="Imagens/imagem (8).png" alt="Poster & Flyer" loading="lazy">
+          <img src="Imagens/imagem (8).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
-            <span class="ptag">Poster &bull; Flyer</span>
-            <h4>Composição Gráfica & Estilo</h4>
-            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
+            <div class="pov-cta">
+              <span>Clique para ver mais</span>
+              <iconify-icon icon="mdi:arrow-top-right"></iconify-icon>
+            </div>
           </div>
         </div>
       </div>
@@ -3730,27 +3649,17 @@
 
   <script>
 
-        /* ================================================================
-       INTRO SYSTEM (MOTION MODERNO E RÁPIDO)
+            /* ================================================================
+       INTRO SYSTEM (CINEMATIC CURTAIN REVEAL)
        ================================================================ */
     const introEl = document.getElementById('intro');
     const mainEl = document.getElementById('main');
     const grainEl = document.getElementById('grain');
     let iskipped = false;
 
-    // Timecode simples
-    let tcf = 24;
-    const tcEl = document.getElementById('itc');
-    const tci = setInterval(() => {
-      tcf++;
-      const pad = n => String(n).padStart(2, '0');
-      if (tcEl) tcEl.textContent = `00:${pad(Math.floor(tcf / 60) % 60)}:${pad(tcf % 60)}`;
-    }, 1000 / 30);
-
     function endIntro() {
       if (iskipped) return;
       iskipped = true;
-      clearInterval(tci);
       if (introEl) {
         introEl.classList.add('out');
         setTimeout(() => {
@@ -3759,7 +3668,7 @@
           if (grainEl) grainEl.style.display = 'block';
           document.body.classList.add('active');
           initSite();
-        }, 600);
+        }, 800);
       } else {
         initSite();
       }
@@ -3770,8 +3679,8 @@
       endIntro();
     }
 
-    // Auto-avanço da intro em ~2 segundos
-    setTimeout(endIntro, 2000);
+    // Abertura cinematográfica em ~1.8 segundos
+    setTimeout(endIntro, 1800);
     addEventListener('keydown', e => { if (!iskipped) endIntro(); });
 
     /* ================================================================
