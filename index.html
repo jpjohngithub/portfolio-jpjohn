@@ -2957,336 +2957,510 @@
       }
     }
 
-    @media(max-width:768px) {
+    /* ============================================================
+       INTRO MODERNA (MOTION ELEGANTE E RÁPIDO)
+       ============================================================ */
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #020006;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      transition: opacity .65s cubic-bezier(.16, 1, .3, 1), transform .65s cubic-bezier(.16, 1, .3, 1), filter .65s ease;
+    }
+
+    #intro.out {
+      opacity: 0;
+      transform: scale(1.05);
+      filter: blur(14px);
+      pointer-events: none;
+    }
+
+    .intro-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: .7;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 75%);
+      -webkit-mask-image: radial-gradient(circle at center, black 35%, transparent 75%);
+    }
+
+    .intro-glow {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(168, 85, 247, 0.08) 50%, transparent 70%);
+      filter: blur(60px);
+      animation: introPulse 2.8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes introPulse {
+      0% { transform: scale(.92); opacity: .6; }
+      100% { transform: scale(1.15); opacity: 1; }
+    }
+
+    .intro-core {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .intro-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: introFadeDown .6s cubic-bezier(.16, 1, .3, 1) .1s forwards;
+    }
+
+    .intro-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 10px #ef4444;
+      animation: recBlink 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes recBlink {
+      0% { opacity: .3; }
+      100% { opacity: 1; }
+    }
+
+    .intro-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: clamp(40px, 9.5vw, 88px);
+      line-height: 1;
+      letter-spacing: -2px;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .intro-l1 {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: introSlideUp .7s cubic-bezier(.16, 1, .3, 1) .25s forwards;
+      background: linear-gradient(135deg, #ffffff 40%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .intro-l2 {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: introSlideUp .7s cubic-bezier(.16, 1, .3, 1) .4s forwards;
+      background: linear-gradient(135deg, #a855f7 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.45));
+    }
+
+    .intro-line {
+      width: 130px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #a855f7, #38bdf8, transparent);
+      box-shadow: 0 0 14px rgba(168, 85, 247, 0.85);
+      margin: 18px 0;
+      transform: scaleX(0);
+      animation: introExpandLine .7s cubic-bezier(.16, 1, .3, 1) .55s forwards;
+    }
+
+    .intro-role {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(10px, 2.5vw, 13px);
+      font-weight: 600;
+      letter-spacing: 5px;
+      color: rgba(255, 255, 255, 0.65);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: introFadeUp .7s cubic-bezier(.16, 1, .3, 1) .7s forwards;
+    }
+
+    @keyframes introFadeDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes introSlideUp {
+      from { opacity: 0; transform: translateY(45px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes introExpandLine {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    @keyframes introFadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ESTILOS DE PORTFOLIO APRIMORADOS */
+    .pgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      grid-auto-rows: 290px;
+    }
+
+    .pit {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(139, 92, 246, .12);
+      background: rgba(10, 4, 20, 0.6);
+      transition: all .4s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .pit:hover {
+      border-color: rgba(168, 85, 247, .5);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .6), 0 0 30px rgba(139, 92, 246, .2);
+      transform: translateY(-4px);
+    }
+
+    .pit img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.16, 1, .3, 1), filter .4s ease;
+      display: block;
+    }
+
+    .pit:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.65);
+    }
+
+    .pov {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(2, 0, 6, 0.95) 0%, rgba(2, 0, 6, 0.5) 45%, transparent 100%);
+      transition: opacity .35s ease;
+    }
+
+    .pov .ptag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      color: #c084fc;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .pov h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .pvi {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, .2);
+      border: 1px solid rgba(168, 85, 247, .35);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      transition: all .3s ease;
+      opacity: 0.85;
+    }
+
+    .pit:hover .pvi {
+      background: var(--p6);
+      transform: scale(1.1) rotate(45deg);
+      opacity: 1;
+      box-shadow: 0 0 16px rgba(139, 92, 246, .6);
+    }
+
+    /* Caixa Convidativa Behance */
+    .pf-more {
+      max-width: 900px;
+      margin: 54px auto 0;
+      padding: 0 16px;
+    }
+
+    .pf-more-box {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(2, 0, 6, 0.6));
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      border-radius: 20px;
+      padding: 34px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pf-more-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #a855f7, #38bdf8, transparent);
+    }
+
+    .pf-more-txt h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .pf-more-txt p {
+      font-size: 14px;
+      color: var(--t2);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .btn-more-behance {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--p6), var(--p7));
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 16px 28px;
+      border-radius: 12px;
+      white-space: nowrap;
+      transition: all .35s ease;
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      flex-shrink: 0;
+    }
+
+    .btn-more-behance:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(139, 92, 246, 0.55);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #fff;
+    }
+
+    /* RESPONSIVIDADE NATIVA ELEGANTE PARA DISPOSITIVOS MÓVEIS */
+    @media(max-width: 768px) {
+      body, html, #main {
+        overflow-x: hidden !important;
+      }
+
+      body {
+        cursor: auto !important;
+      }
+
+      .cdot, .cring {
+        display: none !important;
+      }
+
+      * {
+        cursor: auto !important;
+      }
+
       section {
-        padding: 72px 20px
+        padding: 56px 16px !important;
       }
 
       nav {
-        padding: 0 20px
+        padding: 0 16px;
+        height: 64px;
       }
 
       .navl {
-        display: none
+        display: none;
       }
 
       .mbtn {
-        display: block
-      }
-
-      .pgrid {
-        grid-template-columns: 1fr
-      }
-
-      .pit.lg {
-        grid-column: span 1;
-        grid-row: span 1;
-        aspect-ratio: 16/9
-      }
-
-      .procst {
-        grid-template-columns: 1fr;
-        max-width: 280px;
-        margin: 0 auto
-      }
-
-      .frow {
-        grid-template-columns: 1fr
-      }
-
-      .strow {
-        gap: 28px
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 28px;
+        cursor: pointer;
       }
 
       .htitle {
-        letter-spacing: -2px
+        font-size: clamp(32px, 9.5vw, 52px) !important;
+        letter-spacing: -1.5px !important;
+        line-height: 1.15;
+      }
+
+      .hsub {
+        font-size: 14px !important;
+        line-height: 1.6;
+        padding: 0 4px;
+        margin-top: 14px;
       }
 
       .hbtns {
         flex-direction: column;
-        align-items: center
+        width: 100%;
+        max-width: 330px;
+        margin: 24px auto 0 !important;
+        gap: 12px;
       }
 
-      .cdot,
-      .cring {
-        display: none
+      .btnp, .btns {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 14px;
       }
 
-      body {
-        cursor: default
+      /* Grid de Portfolio no Celular: 1 coluna com proporção natural */
+      .pgrid {
+        grid-template-columns: 1fr !important;
+        grid-auto-rows: auto !important;
+        gap: 16px !important;
       }
 
+      .pit, .pit.lg, .pit.tall, .pit.wide {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        aspect-ratio: 16/10 !important;
+        height: auto !important;
+      }
+
+      .pov {
+        opacity: 1 !important;
+        padding: 16px !important;
+        background: linear-gradient(to top, rgba(2, 0, 6, 0.95) 0%, rgba(2, 0, 6, 0.35) 60%, transparent 100%) !important;
+      }
+
+      .pov h4 {
+        font-size: 16px !important;
+        transform: translateY(0) !important;
+      }
+
+      .pov .ptag {
+        font-size: 9px !important;
+        transform: translateY(0) !important;
+      }
+
+      .pvi {
+        opacity: 1 !important;
+        transform: none !important;
+        top: 12px !important;
+        right: 12px !important;
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 16px !important;
+      }
+
+      .pf-more {
+        margin-top: 32px;
+        padding: 0;
+      }
+
+      .pf-more-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 18px;
+        gap: 18px;
+      }
+
+      .btn-more-behance {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 13px;
+      }
+
+      /* Showreel no Celular */
       .reel {
-        height: 70vh
+        height: 55vh !important;
+        min-height: 320px;
       }
 
       .rtitle {
-        font-size: clamp(32px, 10vw, 60px)
+        font-size: clamp(26px, 8.5vw, 42px) !important;
+      }
+
+      .rc, .rhud, .rhudr {
+        display: none !important;
+      }
+
+      /* Contatos no Celular */
+      .ctctin {
+        padding: 0;
+      }
+
+      .clink {
+        padding: 14px 16px !important;
+        font-size: 13px !important;
+        word-break: break-all;
+      }
+
+      /* Footer no Celular */
+      .fin {
+        padding: 24px 16px 36px !important;
+        flex-direction: column-reverse !important;
+        gap: 20px !important;
+        text-align: center !important;
       }
 
       .fwm {
-        font-size: clamp(55px, 22vw, 130px)
+        font-size: clamp(44px, 17vw, 85px) !important;
+        padding: 20px 0 0 !important;
       }
 
-      .rc,
-      .rhud,
-      .rhudr {
-        display: none
+      .fsocs {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
       }
-
-      .f3dbadge {
-        display: none
-      }
-
-    }
-
-    /* Mobile View Mode */
-    .mobile-view .pgrid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
-    }
-
-    .mobile-view .pit {
-      aspect-ratio: 1/1;
-      border-radius: 6px;
-    }
-
-    .mobile-view .pit.lg,
-    .mobile-view .pit.tall,
-    .mobile-view .pit.wide {
-      grid-column: span 2;
-      grid-row: span 1;
-      aspect-ratio: 16/10;
-    }
-
-    .mobile-view .pit h4 {
-      font-size: 12px;
-      bottom: 8px;
-      left: 8px;
-    }
-
-    .mobile-view .pit .ptag {
-      font-size: 9px;
-      bottom: 28px;
-      left: 8px;
-    }
-
-    .mobile-view section {
-      padding: 48px 14px;
-    }
-
-    .mobile-view .htitle {
-      font-size: clamp(32px, 11vw, 56px);
-      letter-spacing: -2px;
-      line-height: 1.1;
-    }
-
-    .mobile-view .hsub {
-      font-size: 13px;
-      line-height: 1.5;
-      margin-top: 8px;
-    }
-
-    .mobile-view .hbtns {
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-      margin-top: 24px;
-    }
-
-    .mobile-view .btnp,
-    .mobile-view .btns {
-      width: 100%;
-      justify-content: center;
-      padding: 12px 20px;
-      font-size: 13px;
-    }
-
-    .mobile-view .stit {
-      font-size: clamp(24px, 7vw, 40px);
-      letter-spacing: -1px;
-    }
-
-    .mobile-view .sdesc {
-      font-size: 13px;
-      line-height: 1.6;
-      margin-top: 10px;
-    }
-
-    .mobile-view .svcgrid {
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .mobile-view .scard {
-      padding: 16px;
-    }
-
-    .mobile-view .scard h4 {
-      font-size: 15px;
-    }
-
-    .mobile-view .strow {
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .mobile-view .testgrid {
-      grid-template-columns: 1fr;
-    }
-
-    .mobile-view .tcard {
-      padding: 16px;
-    }
-
-    .mobile-view .ctctin {
-      flex-direction: column;
-    }
-
-    .mobile-view .cinfo {
-      margin-bottom: 24px;
-    }
-
-    .mobile-view .clinks {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .mobile-view .cinfo h2 {
-      font-size: 22px;
-    }
-
-    .mobile-view .cinfo p {
-      font-size: 13px;
-    }
-
-    .mobile-view .frow {
-      flex-direction: column;
-    }
-
-    .mobile-view .stags {
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .mobile-view .stags span {
-      font-size: 10px;
-      padding: 4px 8px;
-    }
-
-    .mobile-view .clink {
-      font-size: 12px;
-    }
-
-    .mobile-view nav {
-      padding: 0 14px;
-      height: 60px;
-    }
-
-    .mobile-view .lname {
-      font-size: 11px;
-      margin-left: 6px;
-    }
-
-    .mobile-view .lphoto {
-      width: 30px;
-      height: 30px;
-    }
-
-    .mobile-view .rtitle {
-      font-size: clamp(24px, 8vw, 40px);
-    }
-
-    .mobile-view .rmeta {
-      font-size: 11px;
-      margin-top: 8px;
-    }
-
-    .mobile-view .rbox {
-      display: none;
-    }
-
-    .mobile-view .reel {
-      height: 35vh;
-      min-height: 200px;
-    }
-
-    .mobile-view .sc3dvis {
-      display: none;
-    }
-
-    .mobile-view .sc3dtxt {
-      text-align: center;
-      margin-top: 32px;
-    }
-
-    .mobile-view .sc3dtxt .stit {
-      font-size: 22px;
-    }
-
-    .mobile-view .procst {
-      gap: 12px;
-    }
-
-    .mobile-view .procst .pcard {
-      padding: 14px;
-    }
-
-    .mobile-view .fwm {
-      font-size: clamp(40px, 18vw, 80px);
-    }
-
-    .mobile-view .ftag {
-      font-size: 11px;
-      margin-top: 8px;
-    }
-
-    .mobile-view .fcp {
-      font-size: 11px;
-    }
-
-    .mobile-view .fsocs {
-      gap: 14px;
-      margin-top: 14px;
-    }
-
-    .mobile-view .fsoc iconify-icon {
-      font-size: 18px;
-    }
-
-    .view-toggle {
-      position: fixed;
-      top: 80px;
-      right: 16px;
-      z-index: 9999;
-      background: var(--bg);
-      border: 1px solid var(--p6);
-      color: var(--t1);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all .3s;
-    }
-
-    .view-toggle:hover {
-      background: var(--p6);
-      color: var(--bg);
     }
   </style>
 </head>
 
 <body>
-
-  <!-- Mobile Toggle -->
-  <button class="view-toggle" onclick="toggleView()" id="viewToggle">
-    <iconify-icon icon="mdi:cellphone"></iconify-icon>
-  </button>
 
   <!-- Cursor -->
   <div class="cdot" id="cdot"></div>
@@ -3299,36 +3473,21 @@
   <!-- ============================================================
      INTRO
      ============================================================ -->
-  <div id="intro">
-    <div class="inoise"></div>
-    <div class="iscan"></div>
-    <div class="isweep"></div>
-    <div class="iflash if1"></div>
-    <div class="iflash if2"></div>
-    <div class="iflash if3"></div>
-    <canvas id="icanvas"></canvas>
-    <div class="itc" id="itc">00:00:00:00</div>
-    <div class="itcr">JP · 2026</div>
-    <div class="iportal" id="iportal">
-      <div class="iring"></div>
-      <div class="iring"></div>
-      <div class="iring"></div>
-      <div class="iring"></div>
-      <div class="iring"></div>
-    </div>
-    <div class="itxt">
-      <span class="iline itm glitch" id="il1">JP</span>
-      <span class="iline itm igrad" id="il2">EDITOR</span>
-      <span class="iline its" id="il3">Edição &nbsp;·&nbsp; Motion &nbsp;·&nbsp; Photoshop</span>
-      <div class="itline" id="il4"></div>
-    </div>
-    <div class="iloader">
-      <div class="ibar">
-        <div class="ifill"></div>
+  <div id="intro" onclick="skipIntro()">
+    <div class="intro-grid"></div>
+    <div class="intro-glow"></div>
+    <div class="intro-core">
+      <div class="intro-tag">
+        <span class="intro-dot"></span><span id="itc">00:00:24</span>
       </div>
-      <div class="iltxt">Carregando experiência</div>
+      <div class="intro-brand">
+        <span class="intro-l1">JP</span>
+        <span class="intro-l2">EDITOR</span>
+      </div>
+      <div class="intro-line"></div>
+      <div class="intro-role">VIDEO EDITING &bull; MOTION DESIGN &bull; CREATIVE</div>
     </div>
-    <button id="skipbtn" onclick="skipIntro()">PULAR &nbsp;[ESC]</button>
+    <button id="skipbtn" onclick="skipIntro(event)">PULAR</button>
   </div>
 
   <!-- ============================================================
@@ -3374,10 +3533,8 @@
         <span class="lname">JP/John Editor</span>
       </a>
       <ul class="navl">
-        <li><a href="#services">Serviços</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#process">Processo</a></li>
-        <li><a href="#testimonials">Depoimentos</a></li>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#reel">Showreel</a></li>
         <li><a href="#contact" class="ncta">Contato</a></li>
       </ul>
       <button class="mbtn" onclick="toggleMob()"><iconify-icon icon="mdi:menu"></iconify-icon></button>
@@ -3491,49 +3648,6 @@
       </div>
     </div>
 
-    <!-- SERVICES -->
-    <section class="svcbg" id="services">
-      <div class="swm" style="top:-20px;left:-30px">SERVIÇOS</div>
-      <div class="svchd rv"><span class="slbl">O que eu faço</span>
-        <h2 class="stit">Trabalho <span class="gtxt">&</span> Resultado</h2>
-        <p class="sdesc">Combino técnica e criatividade para entregar projetos que se destacam no cenário visual.</p>
-      </div>
-      <div class="svcgrid">
-        <div class="scard rv" style="transition-delay:0s">
-          <div class="scinner">
-            <div class="scnum">#01</div>
-            <div class="scico"><iconify-icon icon="mdi:movie-edit"></iconify-icon></div>
-            <h3>Edição de Vídeo</h3>
-            <p>Cortes dinâmicos, color grading cinematográfico e narrativas visuais que prendem a atenção do início ao
-              fim.</p>
-            <div class="stags"><span>Premiere Pro</span><span>After Effects</span><span>Color Grade</span><span>Cortes
-                Dinâmicos</span></div>
-          </div>
-        </div>
-        <div class="scard rv" style="transition-delay:.1s">
-          <div class="scinner">
-            <div class="scnum">#02</div>
-            <div class="scico"><iconify-icon icon="mdi:motion-outline"></iconify-icon></div>
-            <h3>Motion Design</h3>
-            <p>Animações fluidas, transições criativas e títulos que ganham vida com precisão cirúrgica.</p>
-            <div class="stags"><span>After Effects</span><span>Expressões</span><span>2D &
-                3D</span><span>Transições</span></div>
-          </div>
-        </div>
-        <div class="scard rv" style="transition-delay:.2s">
-          <div class="scinner">
-            <div class="scnum">#03</div>
-            <div class="scico"><iconify-icon icon="mdi:palette-outline"></iconify-icon></div>
-            <h3>Thumbnail & Flyer</h3>
-            <p>Thumbnails impactantes e flyers profissionais criados no Photoshop para destacar seu conteúdo e sua
-              marca.</p>
-            <div class="stags"><span>Photoshop</span><span>Thumbnail</span><span>Flyer</span><span>Composição</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- SHOWREEL -->
     <section class="reel" id="reel">
       <div class="reelbg"></div>
@@ -3561,36 +3675,6 @@
       </div>
     </section>
 
-    <!-- SHOWCASE — 3D CANVAS SPHERE -->
-    <section class="sc3d" id="showcase">
-      <div class="swm" style="bottom:-50px;right:-40px;text-align:right">VISÃO</div>
-      <div class="sc3din">
-        <div class="sc3dvis rvl">
-          <canvas id="sphere" width="400" height="400"></canvas>
-        </div>
-        <div class="sc3dtxt rvr">
-          <span class="slbl">Por que me escolher</span>
-          <h2 class="stit">Visão além<br><span class="gtxt">da sua ideia</span></h2>
-          <p class="sdesc">Cada projeto é uma oportunidade única de criar algo que nunca existiu. Com domínio técnico e
-            sensibilidade artística, entrego resultados que conectam marcas às pessoas.</p>
-          <div class="strow">
-            <div class="sti">
-              <div class="stn" data-target="150">0</div>
-              <div class="stl">Projetos entregues</div>
-            </div>
-            <div class="sti">
-              <div class="stn" data-target="80">0</div>
-              <div class="stl">Clientes satisfeitos</div>
-            </div>
-            <div class="sti">
-              <div class="stn" data-target="7">0</div>
-              <div class="stl">Anos de experiência</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- PORTFOLIO -->
     <section class="pflio" id="portfolio">
       <div class="swm" style="top:50px;right:-60px">WORK</div>
@@ -3603,50 +3687,81 @@
         <div class="pit lg rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')">
           <img src="Imagens/imagem (1).png" alt="Thumbnail">
           <div class="pov">
-            <div class="pvi"><iconify-icon icon="mdi:arrow-expand"></iconify-icon></div>
+            <span class="ptag">Thumbnail &bull; YouTube</span>
+            <h4>Retenção & Storytelling</h4>
+            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
         <div class="pit tall rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.05s">
           <img src="Imagens/imagem (2).png" alt="Flyer">
           <div class="pov">
-            <div class="pvi"><iconify-icon icon="mdi:arrow-expand"></iconify-icon></div>
+            <span class="ptag">Social Media &bull; Flyer</span>
+            <h4>Flyer Promocional</h4>
+            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.1s">
           <img src="Imagens/imagem (3).png" alt="Thumbnail">
           <div class="pov">
-            <div class="pvi"><iconify-icon icon="mdi:arrow-expand"></iconify-icon></div>
+            <span class="ptag">Thumbnail &bull; High CTR</span>
+            <h4>Composição & Cores</h4>
+            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
         <div class="pit wide rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.15s">
           <img src="Imagens/imagem (4).png" alt="Flyer">
           <div class="pov">
-            <div class="pvi"><iconify-icon icon="mdi:arrow-expand"></iconify-icon></div>
+            <span class="ptag">Design &bull; Flyer</span>
+            <h4>Arte de Alto Impacto</h4>
+            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.2s">
           <img src="Imagens/imagem (5).png" alt="Thumbnail">
           <div class="pov">
-            <div class="pvi"><iconify-icon icon="mdi:arrow-expand"></iconify-icon></div>
+            <span class="ptag">Thumbnail &bull; Edição</span>
+            <h4>Direção Criativa</h4>
+            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
         <div class="pit tall rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.25s">
           <img src="Imagens/imagem (6).png" alt="Flyer">
           <div class="pov">
-            <div class="pvi"><iconify-icon icon="mdi:arrow-expand"></iconify-icon></div>
+            <span class="ptag">Flyer &bull; Evento</span>
+            <h4>Identidade Visual</h4>
+            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.3s">
           <img src="Imagens/imagem (7).png" alt="Thumbnail">
           <div class="pov">
-            <div class="pvi"><iconify-icon icon="mdi:arrow-expand"></iconify-icon></div>
+            <span class="ptag">Thumbnail &bull; Criativo</span>
+            <h4>Manipulação Digital</h4>
+            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.35s">
           <img src="Imagens/imagem (8).png" alt="Flyer">
           <div class="pov">
-            <div class="pvi"><iconify-icon icon="mdi:arrow-expand"></iconify-icon></div>
+            <span class="ptag">Poster &bull; Flyer</span>
+            <h4>Design Visual</h4>
+            <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
+        </div>
+      </div>
+
+      <!-- BOTÃO E CTA BEHANCE CONVIDATIVO -->
+      <div class="pf-more rv">
+        <div class="pf-more-box">
+          <div class="pf-more-txt">
+            <h3>Gostou do estilo visual?</h3>
+            <p>Confira a galeria completa de thumbnails, flyers e criações no Behance.</p>
+          </div>
+          <a href="https://www.behance.net/johnpetter" target="_blank" class="btn-more-behance">
+            <iconify-icon icon="mdi:behance" style="font-size: 20px;"></iconify-icon>
+            <span>Ver mais projetos no Behance</span>
+            <iconify-icon icon="mdi:arrow-top-right"></iconify-icon>
+          </a>
         </div>
       </div>
     </section>
@@ -3676,72 +3791,6 @@
         </div>
       </div>
     </div>
-
-    <!-- PROCESS -->
-    <section class="proc" id="process">
-      <div class="swm" style="top:40px;left:-20px">PROCESSO</div>
-      <div class="prochd rv">
-        <span class="slbl">Como funciona</span>
-        <h2 class="stit">Meu <span class="gtxt">Processo</span></h2>
-        <p class="sdesc">Do conceito à entrega final, cada etapa é pensada para maximizar o impacto visual do seu
-          projeto.</p>
-      </div>
-      <div class="proctl">
-        <div class="procline">
-          <div class="proclf" id="proclf"></div>
-        </div>
-        <div class="procst">
-          <div class="pstep rv" style="transition-delay:0s">
-            <div class="pnum">01</div>
-            <h4>Discovery</h4>
-            <p>Entendo sua marca, objetivos e referências para alinhar a direção criativa.</p>
-          </div>
-          <div class="pstep rv" style="transition-delay:.12s">
-            <div class="pnum">02</div>
-            <h4>Conceito</h4>
-            <p>Crio storyboards, moodboards e protótipos para visualizar antes de executar.</p>
-          </div>
-          <div class="pstep rv" style="transition-delay:.24s">
-            <div class="pnum">03</div>
-            <h4>Execução</h4>
-            <p>Produzo com atenção a cada detalhe — timing, cores, movimentos e composição.</p>
-          </div>
-          <div class="pstep rv" style="transition-delay:.36s">
-            <div class="pnum">04</div>
-            <h4>Entrega</h4>
-            <p>Revisões, exportação otimizada e entrega nos formatos que você precisa.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="testi" id="testimonials">
-      <div class="swm" style="bottom:-30px;right:-80px;text-align:right">FEEDBACK</div>
-      <div class="testhd rv"><span class="slbl">Feedback</span>
-        <h2 class="stit">O que dizem <span class="gtxt">sobre mim</span></h2>
-      </div>
-      <div class="testgrid">
-        <div class="tcard rv" style="transition-delay:0s">
-          <div class="tstars"><iconify-icon icon="mdi:star"></iconify-icon><iconify-icon
-              icon="mdi:star"></iconify-icon><iconify-icon icon="mdi:star"></iconify-icon><iconify-icon
-              icon="mdi:star"></iconify-icon><iconify-icon icon="mdi:star"></iconify-icon></div>
-          <blockquote>"Contratei o John pra editar meus vídeos do YouTube e o canal cresceu 40% em 3 meses. O cara entende o que o público quer ver."</blockquote>
-        </div>
-        <div class="tcard rv" style="transition-delay:.1s">
-          <div class="tstars"><iconify-icon icon="mdi:star"></iconify-icon><iconify-icon
-              icon="mdi:star"></iconify-icon><iconify-icon icon="mdi:star"></iconify-icon><iconify-icon
-              icon="mdi:star"></iconify-icon><iconify-icon icon="mdi:star"></iconify-icon></div>
-          <blockquote>"Thumbnails que ele fez pro meu canal ficaram absurdas. A taxa de clique subiu demais depois que troquei pra arte dele."</blockquote>
-        </div>
-        <div class="tcard rv" style="transition-delay:.2s">
-          <div class="tstars"><iconify-icon icon="mdi:star"></iconify-icon><iconify-icon
-              icon="mdi:star"></iconify-icon><iconify-icon icon="mdi:star"></iconify-icon><iconify-icon
-              icon="mdi:star"></iconify-icon><iconify-icon icon="mdi:star"></iconify-icon></div>
-          <blockquote>"Entrega rápida, atenção aos detalhes e ainda sugere coisas que nem imaginei. Virei cliente fixo."</blockquote>
-        </div>
-      </div>
-    </section>
 
     <!-- CONTACT -->
     <section class="ctct" id="contact">
@@ -3795,58 +3844,50 @@
   </div><!-- end #main -->
 
   <script>
-    /* ================================================================
-       INTRO SYSTEM
+
+        /* ================================================================
+       INTRO SYSTEM (MOTION MODERNO E RÁPIDO)
        ================================================================ */
     const introEl = document.getElementById('intro');
-    const iportal = document.getElementById('iportal');
     const mainEl = document.getElementById('main');
     const grainEl = document.getElementById('grain');
-    const icv = document.getElementById('icanvas');
-    const ictx = icv.getContext('2d');
-    let iparts = [], iframe, iskipped = false;
+    let iskipped = false;
 
-    // Timecode
-    let tcf = 0; const tcEl = document.getElementById('itc');
+    // Timecode simples
+    let tcf = 24;
+    const tcEl = document.getElementById('itc');
     const tci = setInterval(() => {
       tcf++;
       const pad = n => String(n).padStart(2, '0');
-      tcEl.textContent = `${pad(Math.floor(tcf / (24 * 60 * 60)))}:${pad(Math.floor(tcf / (24 * 60)) % 60)}:${pad(Math.floor(tcf / 24) % 60)}:${pad(tcf % 24)}`;
-    }, 1000 / 24);
-
-    function rsz() { icv.width = innerWidth; icv.height = innerHeight }
-    rsz(); addEventListener('resize', rsz);
-
-    class IP { constructor() { this.rst(true) } rst(i) { this.x = Math.random() * icv.width; this.y = i ? Math.random() * icv.height : icv.height + 10; this.sz = Math.random() * 1.8 + .4; this.sp = Math.random() * 1.8 + .4; this.a = Math.random() * .7 + .2; this.dr = (Math.random() - .5) * .6 } upd() { this.y -= this.sp; this.x += this.dr; if (this.y < -10) this.rst(false) } drw() { ictx.beginPath(); ictx.arc(this.x, this.y, this.sz, 0, Math.PI * 2); ictx.fillStyle = `rgba(139,92,246,${this.a})`; ictx.fill() } }
-    for (let i = 0; i < 140; i++)iparts.push(new IP());
-    function animI() { ictx.clearRect(0, 0, icv.width, icv.height); iparts.forEach(p => { p.upd(); p.drw() }); iframe = requestAnimationFrame(animI) }
-    animI();
-
-    // Text reveals
-    [[600, 'il1'], [1300, 'il2'], [2000, 'il3'], [2600, 'il4']].forEach(([t, id]) => {
-      setTimeout(() => { const el = document.getElementById(id); if (el) el.classList.add('r') }, t);
-    });
-    setTimeout(() => iportal.classList.add('on'), 900);
-
-    // Reel timecode
-    let rtcf = 0; const rtcEl = document.getElementById('reeltc');
-    setInterval(() => { rtcf++; const pad = n => String(n).padStart(2, '0'); const f = rtcf % 60, s = Math.floor(rtcf / 60) % 60, m = Math.floor(rtcf / 3600) % 60, h = Math.floor(rtcf / 216000); if (rtcEl) rtcEl.textContent = `${pad(h)}:${pad(m)}:${pad(s)}:${pad(f)}`; }, 1000 / 60);
+      if (tcEl) tcEl.textContent = `00:${pad(Math.floor(tcf / 60) % 60)}:${pad(tcf % 60)}`;
+    }, 1000 / 30);
 
     function endIntro() {
-      if (iskipped) return; iskipped = true; clearInterval(tci);
-      introEl.classList.add('out');
-      setTimeout(() => {
-        introEl.style.display = 'none';
-        cancelAnimationFrame(iframe);
-        mainEl.classList.add('on');
-        grainEl.style.display = 'block';
-        document.body.classList.add('active');
+      if (iskipped) return;
+      iskipped = true;
+      clearInterval(tci);
+      if (introEl) {
+        introEl.classList.add('out');
+        setTimeout(() => {
+          introEl.style.display = 'none';
+          if (mainEl) mainEl.classList.add('on');
+          if (grainEl) grainEl.style.display = 'block';
+          document.body.classList.add('active');
+          initSite();
+        }, 600);
+      } else {
         initSite();
-      }, 1600);
+      }
     }
-    function skipIntro() { endIntro() }
-    setTimeout(() => endIntro(), 5800);
-    addEventListener('keydown', e => { if (e.key === 'Escape' && !iskipped) endIntro() });
+
+    function skipIntro(e) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      endIntro();
+    }
+
+    // Auto-avanço da intro em ~2 segundos
+    setTimeout(endIntro, 2000);
+    addEventListener('keydown', e => { if (!iskipped) endIntro(); });
 
     /* ================================================================
        MAIN SITE INIT
@@ -4211,22 +4252,9 @@
       else { Object.assign(l.style, { display: 'flex', flexDirection: 'column', position: 'absolute', top: '76px', left: '0', right: '0', padding: '28px 24px', background: 'rgba(2,0,6,.98)', gap: '22px', backdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(139,92,246,.08)' }) }
     }
 
-    let mobileView = false;
-    function toggleView() {
-      mobileView = !mobileView;
-      document.body.classList.toggle('mobile-view', mobileView);
-      const btn = document.getElementById('viewToggle');
-      if (mobileView) {
-        btn.innerHTML = '<iconify-icon icon="mdi:desktop"></iconify-icon>';
-        btn.style.background = 'var(--p6)';
-        btn.style.color = 'var(--bg)';
-      } else {
-        btn.innerHTML = '<iconify-icon icon="mdi:cellphone"></iconify-icon>';
-        btn.style.background = '';
-        btn.style.color = '';
-      }
-    }
+    
     addEventListener('keydown', e => { if (e.key === 'Escape') { closeLB(); if (!iskipped) endIntro() } });
+  
   </script>
 </body>
 
