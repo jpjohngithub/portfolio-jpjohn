@@ -2166,127 +2166,21 @@
 
     .pgrid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
       max-width: 1200px;
       margin: 0 auto;
-      grid-auto-rows: 280px;
     }
 
     .pit {
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      aspect-ratio: auto;
-      cursor: none;
-      border: 1px solid rgba(139, 92, 246, .06);
-      will-change: transform;
-      transform-style: preserve-3d;
-      transition: box-shadow .5s
-    }
-
-    .pit.lg {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .pit.tall {
-      grid-row: span 2;
-    }
-
-    .pit.wide {
-      grid-column: span 2;
-    }
-
-    .pit img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .8s var(--ease-out), filter .6s;
-      pointer-events: none
-    }
-
-    .pit img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .8s var(--ease-out), filter .6s;
-      pointer-events: none
-    }
-
-    .pit:hover img {
-      transform: scale(1.1);
-      filter: brightness(.38) saturate(.4)
-    }
-
-    .pov {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 32px;
-      opacity: 0;
-      transition: opacity .45s;
-      background: linear-gradient(to top, rgba(2, 0, 6, .95) 0%, rgba(2, 0, 6, .3) 50%, transparent 100%)
-    }
-
-    .pit:hover .pov {
-      opacity: 1
-    }
-
-    .pov h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 6px;
-      letter-spacing: -.5px;
-      transform: translateY(24px);
-      transition: transform .45s var(--ease-out)
-    }
-
-    .pit:hover .pov h4 {
-      transform: translateY(0)
-    }
-
-    .pov .ptag {
-      font-size: 10px;
-      color: var(--p4);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      transform: translateY(24px);
-      transition: transform .45s var(--ease-out) .05s
-    }
-
-    .pit:hover .pov .ptag {
-      transform: translateY(0)
-    }
-
-    .pvi {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(139, 92, 246, .14);
-      backdrop-filter: blur(12px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 17px;
-      border: 1px solid rgba(139, 92, 246, .22);
-      transform: translateY(-12px) scale(.8);
-      opacity: 0;
-      transition: all .45s var(--ease-out) .1s
-    }
-
-    .pit:hover .pvi {
-      opacity: 1;
-      transform: translateY(0) scale(1)
+      cursor: pointer;
+      border: 1px solid rgba(139, 92, 246, .14);
+      background: rgba(10, 4, 20, 0.7);
+      aspect-ratio: 16/9;
+      transition: all .4s cubic-bezier(.16, 1, .3, 1);
     }
 
     /* Glow shadow on 3D hover */
@@ -3120,20 +3014,20 @@
     /* ESTILOS DE PORTFOLIO APRIMORADOS */
     .pgrid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
       max-width: 1200px;
       margin: 0 auto;
-      grid-auto-rows: 290px;
     }
 
     .pit {
       position: relative;
-      border-radius: 18px;
+      border-radius: 16px;
       overflow: hidden;
       cursor: pointer;
-      border: 1px solid rgba(139, 92, 246, .12);
-      background: rgba(10, 4, 20, 0.6);
+      border: 1px solid rgba(139, 92, 246, .14);
+      background: rgba(10, 4, 20, 0.7);
+      aspect-ratio: 16/9;
       transition: all .4s cubic-bezier(.16, 1, .3, 1);
     }
 
@@ -3357,10 +3251,12 @@
 
       /* Grid de Portfolio no Celular: 1 coluna com proporção natural */
       .pgrid {
-        grid-template-columns: 1fr !important;
-        grid-auto-rows: auto !important;
-        gap: 16px !important;
-      }
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
       .pit, .pit.lg, .pit.tall, .pit.wide {
         grid-column: span 1 !important;
@@ -3534,7 +3430,6 @@
       </a>
       <ul class="navl">
         <li><a href="#portfolio">Portfólio</a></li>
-        <li><a href="#reel">Showreel</a></li>
         <li><a href="#contact" class="ncta">Contato</a></li>
       </ul>
       <button class="mbtn" onclick="toggleMob()"><iconify-icon icon="mdi:menu"></iconify-icon></button>
@@ -3607,8 +3502,7 @@
           <div class="hbtns">
             <a href="#portfolio" class="btnp magnetic">Ver Projetos <iconify-icon
                 icon="mdi:arrow-right"></iconify-icon></a>
-            <a href="#reel" class="btns magnetic"><iconify-icon icon="mdi:play-circle-outline"></iconify-icon>Showreel
-              2026</a>
+            <a href="#contact" class="btns magnetic"><iconify-icon icon="mdi:chat-outline"></iconify-icon>Falar Comigo</a>
           </div>
         </div>
       </div>
@@ -3646,105 +3540,96 @@
           <div class="mqi">Visual Effects <span class="mqsep">◆</span></div>
         </div>
       </div>
-    </div>
-
-    <!-- SHOWREEL -->
-    <section class="reel" id="reel">
-      <div class="reelbg"></div>
-      <div class="rscan"></div>
-      <div class="rvign"></div>
-      <div class="rc tl"></div>
-      <div class="rc tr"></div>
-      <div class="rc bl"></div>
-      <div class="rc br"></div>
-      <div class="rhud" id="reeltc">00:00:00:00</div>
-      <div class="rhudr">JP EDITOR · 2026</div>
-      <div class="reel-content">
-        <div class="reye rv">— Reel Criativo 2026</div>
-        <div class="rvsc" style="position:relative;display:inline-flex;align-items:center;justify-content:center">
-          <button class="rplay" id="rplaybtn" onclick="reelClick()">
-            <div class="rring"></div>
-            <div class="rring"></div>
-            <div class="rring"></div>
-            <iconify-icon icon="mdi:play" style="position:relative;z-index:1;margin-left:5px"></iconify-icon>
-          </button>
-        </div>
-        <h2 class="rtitle rv">Showreel <em class="gtxt">2026</em></h2>
-        <div class="rmeta rv"><span>7 anos de projetos</span><span class="rmdiv"></span><span>Produzido por John</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO -->
+    </div>    <!-- PORTFOLIO -->
     <section class="pflio" id="portfolio">
       <div class="swm" style="top:50px;right:-60px">WORK</div>
       <div class="pfhd rv">
-        <div><span class="slbl">Trabalhos selecionados</span>
-          <h2 class="stit">Portfolio</h2>
+        <div>
+          <span class="slbl">Trabalhos Selecionados</span>
+          <h2 class="stit">Portfólio <span class="gtxt">& Criações</span></h2>
+          <p class="sdesc" style="max-width: 620px; margin-top: 10px; font-size: 14px; color: var(--t2); line-height: 1.6;">
+            Thumbnails de alta conversão, manipulação de imagens e artes criadas para gerar máximo impacto e retenção.
+          </p>
         </div>
       </div>
+
       <div class="pgrid" id="pgrid">
-        <div class="pit lg rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')">
-          <img src="Imagens/imagem (1).png" alt="Thumbnail">
+        <!-- Item 1 -->
+        <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')">
+          <img src="Imagens/imagem (1).png" alt="Thumbnail YouTube" loading="lazy">
           <div class="pov">
             <span class="ptag">Thumbnail &bull; YouTube</span>
-            <h4>Retenção & Storytelling</h4>
+            <h4>Retenção & Storytelling Visual</h4>
             <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
-        <div class="pit tall rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.05s">
-          <img src="Imagens/imagem (2).png" alt="Flyer">
+
+        <!-- Item 2 -->
+        <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.05s">
+          <img src="Imagens/imagem (2).png" alt="Flyer Promocional" loading="lazy">
           <div class="pov">
-            <span class="ptag">Social Media &bull; Flyer</span>
-            <h4>Flyer Promocional</h4>
+            <span class="ptag">Design &bull; Visual Impact</span>
+            <h4>Composição & Alto Contraste</h4>
             <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
+
+        <!-- Item 3 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.1s">
-          <img src="Imagens/imagem (3).png" alt="Thumbnail">
+          <img src="Imagens/imagem (3).png" alt="Thumbnail YouTube" loading="lazy">
           <div class="pov">
             <span class="ptag">Thumbnail &bull; High CTR</span>
-            <h4>Composição & Cores</h4>
+            <h4>Teoria das Cores & Iluminação</h4>
             <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
-        <div class="pit wide rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.15s">
-          <img src="Imagens/imagem (4).png" alt="Flyer">
+
+        <!-- Item 4 -->
+        <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.15s">
+          <img src="Imagens/imagem (4).png" alt="Flyer Artístico" loading="lazy">
           <div class="pov">
-            <span class="ptag">Design &bull; Flyer</span>
-            <h4>Arte de Alto Impacto</h4>
+            <span class="ptag">Arte Digital &bull; Flyer</span>
+            <h4>Identidade & Ambientação</h4>
             <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
+
+        <!-- Item 5 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.2s">
-          <img src="Imagens/imagem (5).png" alt="Thumbnail">
+          <img src="Imagens/imagem (5).png" alt="Thumbnail Edição" loading="lazy">
           <div class="pov">
             <span class="ptag">Thumbnail &bull; Edição</span>
-            <h4>Direção Criativa</h4>
+            <h4>Direção Criativa & Dinamismo</h4>
             <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
-        <div class="pit tall rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.25s">
-          <img src="Imagens/imagem (6).png" alt="Flyer">
+
+        <!-- Item 6 -->
+        <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.25s">
+          <img src="Imagens/imagem (6).png" alt="Flyer & Edição" loading="lazy">
           <div class="pov">
-            <span class="ptag">Flyer &bull; Evento</span>
-            <h4>Identidade Visual</h4>
+            <span class="ptag">Design &bull; Evento</span>
+            <h4>Tipografia & Efeitos Visuais</h4>
             <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
+
+        <!-- Item 7 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.3s">
-          <img src="Imagens/imagem (7).png" alt="Thumbnail">
+          <img src="Imagens/imagem (7).png" alt="Thumbnail Manipulação" loading="lazy">
           <div class="pov">
-            <span class="ptag">Thumbnail &bull; Criativo</span>
-            <h4>Manipulação Digital</h4>
+            <span class="ptag">Thumbnail &bull; Photoshop</span>
+            <h4>Manipulação Digital Avançada</h4>
             <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
+
+        <!-- Item 8 -->
         <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.35s">
-          <img src="Imagens/imagem (8).png" alt="Flyer">
+          <img src="Imagens/imagem (8).png" alt="Poster & Flyer" loading="lazy">
           <div class="pov">
             <span class="ptag">Poster &bull; Flyer</span>
-            <h4>Design Visual</h4>
+            <h4>Composição Gráfica & Estilo</h4>
             <div class="pvi"><iconify-icon icon="mdi:arrow-top-right"></iconify-icon></div>
           </div>
         </div>
@@ -3755,7 +3640,7 @@
         <div class="pf-more-box">
           <div class="pf-more-txt">
             <h3>Gostou do estilo visual?</h3>
-            <p>Confira a galeria completa de thumbnails, flyers e criações no Behance.</p>
+            <p>Confira a galeria completa de thumbnails, flyers e criações completas no Behance.</p>
           </div>
           <a href="https://www.behance.net/johnpetter" target="_blank" class="btn-more-behance">
             <iconify-icon icon="mdi:behance" style="font-size: 20px;"></iconify-icon>
