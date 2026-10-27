@@ -3177,16 +3177,23 @@
         font-size: 14px;
       }
 
-            /* Grid de Portfolio no Celular */
+                  /* Grid de Portfolio no Celular (Proporção 16:9 correta e 1 coluna) */
       .pgrid {
         grid-template-columns: 1fr !important;
         grid-auto-rows: auto !important;
         gap: 16px !important;
       }
 
-      .pit {
+      .pit, .pit.p-hero, .pit.p-wide {
+        grid-column: span 1 !important;
         aspect-ratio: 16/9 !important;
         height: auto !important;
+      }
+
+      .pit img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
       }
 
       .pov {
@@ -3407,8 +3414,7 @@
           </h1>
         </div>
         <div class="hz3">
-          <p class="hsub">Edição de vídeo, motion design e manipulação digital que transformam ideias em experiências
-            visuais inesquecíveis.</p>
+          <p class="hsub">Edições dinâmicas, cortes precisos e artes visuais de alto impacto que prendem a atenção do público do início ao fim.</p>
         </div>
         <div class="hz4">
           <div class="hbtns">
@@ -3464,7 +3470,7 @@
 
             <div class="pgrid" id="pgrid">
         <!-- Item 1 -->
-        <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')">
+        <div class="pit p-hero rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')">
           <img src="Imagens/imagem (1).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
             <div class="pov-cta">
@@ -3530,7 +3536,7 @@
         </div>
 
         <!-- Item 7 -->
-        <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.3s">
+        <div class="pit p-wide rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.3s">
           <img src="Imagens/imagem (7).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
             <div class="pov-cta">
