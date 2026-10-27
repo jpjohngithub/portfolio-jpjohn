@@ -592,12 +592,12 @@
         opacity: 1;
         transform: translateX(12px) skewX(-6deg);
         filter: blur(0);
-        text-shadow: -6px 0 #ff003c, 6px 0 #00eeff
+        text-shadow: -6px 0 #ff003c, 6px 0 #a855f7
       }
 
       40% {
         transform: translateX(-5px) skewX(3deg);
-        text-shadow: 5px 0 #ff003c, -5px 0 #00eeff
+        text-shadow: 5px 0 #ff003c, -5px 0 #a855f7
       }
 
       60% {
@@ -2164,11 +2164,11 @@
       background: rgba(139, 92, 246, .08)
     }
 
-    .pgrid {
+        .pgrid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -2177,10 +2177,38 @@
       border-radius: 16px;
       overflow: hidden;
       cursor: pointer;
-      border: 1px solid rgba(139, 92, 246, .14);
-      background: rgba(10, 4, 20, 0.7);
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      background: #090314;
       aspect-ratio: 16/9;
-      transition: all .4s cubic-bezier(.16, 1, .3, 1);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .pit:hover {
+      transform: translateY(-5px);
+      border-color: rgba(168, 85, 247, 0.7);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(139, 92, 246, 0.4);
+    }
+
+    /* Regra essencial para desktop e mobile: A imagem sempre preenche 100% da caixa na proporção 16:9 correta */
+    .pit img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      display: block !important;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+    }
+
+    .pit:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.65);
+    }
+
+    /* Flyer vertical: exibe a arte completa sem cortar */
+    .pit.flyer img {
+      object-fit: contain !important;
+      background: radial-gradient(circle at center, #1b0933 0%, #06010f 100%) !important;
     }
 
     /* Glow shadow on 3D hover */
@@ -2926,7 +2954,7 @@
       margin: 0;
       transform: translateY(115%);
       animation: introTitleIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
-      background: linear-gradient(135deg, #ffffff 40%, #c084fc 80%, #38bdf8 100%);
+      background: linear-gradient(135deg, #ffffff 40%, #c084fc 80%, #c084fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 35px rgba(192, 132, 252, 0.25);
@@ -3020,7 +3048,7 @@
 
     .pit:hover .pov-cta {
       transform: translateY(0) scale(1);
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(56, 189, 248, 0.9));
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(168, 85, 247, 0.9));
       border-color: rgba(255, 255, 255, 0.5);
     }
 
@@ -3062,7 +3090,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, #a855f7, #38bdf8, transparent);
+      background: linear-gradient(90deg, transparent, #a855f7, #c084fc, transparent);
     }
 
     .pf-more-txt h3 {
@@ -3177,14 +3205,14 @@
         font-size: 14px;
       }
 
-                  /* Grid de Portfolio no Celular (Proporção 16:9 correta e 1 coluna) */
+                        /* Grid de Portfolio no Celular (Proporção 16:9 correta e 1 coluna) */
       .pgrid {
         grid-template-columns: 1fr !important;
         grid-auto-rows: auto !important;
         gap: 16px !important;
       }
 
-      .pit, .pit.p-hero, .pit.p-wide {
+      .pit {
         grid-column: span 1 !important;
         aspect-ratio: 16/9 !important;
         height: auto !important;
@@ -3194,6 +3222,10 @@
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
+      }
+
+      .pit.flyer img {
+        object-fit: contain !important;
       }
 
       .pov {
@@ -3470,7 +3502,7 @@
 
             <div class="pgrid" id="pgrid">
         <!-- Item 1 -->
-        <div class="pit p-hero rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')">
+        <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')">
           <img src="Imagens/imagem (1).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
             <div class="pov-cta">
@@ -3536,7 +3568,7 @@
         </div>
 
         <!-- Item 7 -->
-        <div class="pit p-wide rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.3s">
+        <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.3s">
           <img src="Imagens/imagem (7).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
             <div class="pov-cta">
@@ -3547,7 +3579,7 @@
         </div>
 
         <!-- Item 8 -->
-        <div class="pit rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.35s">
+        <div class="pit flyer rv" onclick="window.open('https://www.behance.net/johnpetter', '_blank')" style="transition-delay:.35s">
           <img src="Imagens/imagem (8).png" alt="Trabalho John Petter" loading="lazy">
           <div class="pov">
             <div class="pov-cta">
@@ -3994,7 +4026,7 @@
 
     /* Glitch keyframe */
     const gst = document.createElement('style');
-    gst.textContent = `@keyframes hglitch{0%{filter:none}10%{filter:drop-shadow(-3px 0 #ff003c) drop-shadow(3px 0 #00eeff);transform:translateX(-2px)}25%{filter:drop-shadow(3px 0 #ff003c) drop-shadow(-3px 0 #00eeff);transform:translateX(2px)}50%{filter:none;transform:translateX(-1px)}75%{filter:drop-shadow(-1px 0 #9500ff)}100%{filter:none;transform:translateX(0)}}`;
+    gst.textContent = `@keyframes hglitch{0%{filter:none}10%{filter:drop-shadow(-3px 0 #ff003c) drop-shadow(3px 0 #a855f7);transform:translateX(-2px)}25%{filter:drop-shadow(3px 0 #ff003c) drop-shadow(-3px 0 #a855f7);transform:translateX(2px)}50%{filter:none;transform:translateX(-1px)}75%{filter:drop-shadow(-1px 0 #9500ff)}100%{filter:none;transform:translateX(0)}}`;
     document.head.appendChild(gst);
 
     /* ================================================================
